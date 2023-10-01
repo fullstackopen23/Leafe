@@ -1,0 +1,68 @@
+
+GET http://localhost:3001/api/products/
+###
+DELETE  http://localhost:3001/api/products/
+###
+POST  http://localhost:3001/api/products/
+###
+
+
+GET http://localhost:3001/api/users/
+###
+DELETE http://localhost:3001/api/users/
+###
+GET http://localhost:3001/api/users/650f37bc63f2c4cc351e8152/cart
+###
+POST http://localhost:3001/api/login/
+content-type: application/json
+
+{
+    "username": "1",
+    "password": "1"
+}
+
+###
+POST http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "username": "root123",
+    "name": "Superuser",
+    "password": "123456",
+    "shoppingCard": []
+}
+
+###
+POST http://localhost:3001/api/users/650f37bc63f2c4cc351e8152/cart/
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjEiLCJpZCI6IjY1MGYzN2JjNjNmMmM0Y2MzNTFlODE1MiIsImlhdCI6MTY5NTY2MDgzM30.N_jjylGt5CtZ2ZSNzbn2ToR7H3pXvvrxIWg7qbbFhfk
+
+[
+    {
+        "productId": "6517133c465a96395a13bfaf",
+        "amount": 111,
+        "size": "M"
+    }, 
+    {   "productId": "6517133c465a96395a13bfb0",
+         "amount": 1212,
+        "size": "L"
+    }
+]
+###
+POST http://localhost:3001/api/create-checkout-session
+content-type: application/json
+
+[
+    {
+        "name": "BISI",
+        "priceInCents": 100000,
+        "quantity": 3
+    },
+    {
+        "name": "BISI2",
+        "priceInCents": 2,
+        "quantity": 234
+    }
+        
+    
+]
