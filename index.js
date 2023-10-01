@@ -8,6 +8,7 @@ const loginRouter = require('./controllers/login')
 const usersRouter = require('./controllers/users')
 const productsRouter = require('./controllers/products')
 const stripe = require('stripe')(process.env.STRIPE)
+const path = require('path')
 
 mongoose
   .connect(url)
@@ -52,6 +53,9 @@ app.post('/api/create-checkout-session', async (req, res) => {
     cancel_url: `${process.env.DEVURL}/shoppingCart`,
   })
   return res.json({ session: session })
+})
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
 const PORT = process.env.PORT
