@@ -1,10 +1,12 @@
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
-const app = express()
 const mongoose = require('mongoose')
+const app = express()
 const url = process.env.MONGODB_URI
-
+const loginRouter = require('./controllers/login')
+const usersRouter = require('./controllers/users')
+const productsRouter = require('./controllers/products')
 const stripe = require('stripe')(process.env.STRIPE)
 
 mongoose
@@ -23,9 +25,6 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static('dist'))
 
-const loginRouter = require('./controllers/login')
-const usersRouter = require('./controllers/users')
-const productsRouter = require('./controllers/products')
 app.use('/api/login', loginRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/products', productsRouter)
@@ -49,7 +48,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
     shipping_address_collection: {
       allowed_countries,
     },
-    success_url: `${process.env.DEVURL}sucess`,
+    success_url: `${process.env.DEVURL}/sucess`,
     cancel_url: `${process.env.DEVURL}/shoppingCart`,
   })
   return res.json({ session: session })

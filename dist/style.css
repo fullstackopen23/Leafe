@@ -39,13 +39,11 @@ body {
 .active {
     color: #42abc8;
     font-weight: 600;
-    border: 1px solid #42abc8 !important;
 }
 
 .activeSize {
     color: #42abc8;
     font-weight: 600;
-    border: 1px solid #42abc8 !important;
 }
 
 /* NAVBAR */
