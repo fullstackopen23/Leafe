@@ -56,7 +56,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     z-index: 999;
-    padding: 24px 35px;
+    padding: 8px 35px;
 }
 
 nav a {
@@ -97,13 +97,13 @@ nav span {
         flex-direction: column;
         position: fixed;
         top: 0;
-        right: -250px;
+        right: -300px;
         height: 100vh;
         width: 250px;
         gap: 22px;
         background-color: #e4f7f5;
         padding: 80px 0 0 10px;
-        transition: .5s;
+        transition: .2s ease;
         z-index: 999;
         
     }
@@ -114,6 +114,10 @@ nav span {
 
     .nav.active a {
         color: #000000;
+    }
+
+    .nav.active button a {
+        color: white;
     }
 
     #loggedIn {
@@ -261,25 +265,17 @@ nav span {
 .shopContainer {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
     margin: 30px 0px;
     padding: 0 30px;
     gap: 30px;
     min-height: 90vh;
     width: 100%;
-    align-content: flex-start
 }
 
 @media (max-width: 499px) {
     .shopContainer {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        margin: 45px 0px;
-        justify-content: flex-start;
-
     }
     
 }
@@ -488,6 +484,8 @@ nav span {
     display: flex;
     align-items: center;
     gap: 10px;
+    min-height: 90vh;
+    padding: 80px 40px;
     width: 100%;
     flex-direction: column;
 }
