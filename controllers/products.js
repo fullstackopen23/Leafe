@@ -22,7 +22,6 @@ productsRouter.delete('/', (request, response) => {
 })
 
 productsRouter.post('/', (request, response) => {
-  console.log(products)
   products.forEach((product) => {
     const newProduct = new Product({
       name: product.name,

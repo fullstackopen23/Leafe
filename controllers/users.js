@@ -18,6 +18,7 @@ usersRouter.get('/', (request, response) => {
 })
 
 usersRouter.post('/', async (request, response) => {
+  console.log(request.body)
   const { email, name, password, shoppingCart } = request.body
 
   const saltRounds = 10
@@ -29,9 +30,12 @@ usersRouter.post('/', async (request, response) => {
     passwordHash,
     shoppingCart,
   })
-
-  const savedUser = await user.save()
-  response.status(201).json(savedUser)
+  try {
+    const savedUser = await user.save()
+    response.status(201).json(savedUser)
+  } catch (error) {
+    return response.status(400).json({ error })
+  }
 })
 
 usersRouter.post('/:id/cart', async (request, response) => {
@@ -44,7 +48,6 @@ usersRouter.post('/:id/cart', async (request, response) => {
   }
 
   const user = await User.findById(decodedToken.id)
-  console.log(request.body)
   user.shoppingCart = [...request.body]
 
   const savedUser = await user.save()
@@ -56,7 +59,6 @@ usersRouter.get('/:id/cart', async (request, response) => {
   const user = await User.findById(request.params.id).populate(
     'shoppingCart.productId'
   )
-  console.log(user)
   response.status(201).json(user)
 })
 

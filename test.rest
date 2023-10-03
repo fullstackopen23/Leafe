@@ -17,7 +17,7 @@ POST http://localhost:3001/api/login/
 content-type: application/json
 
 {
-    "username": "1",
+    "email": "1",
     "password": "1"
 }
 
@@ -26,10 +26,9 @@ POST http://localhost:3001/api/users/ HTTP/1.1
 content-type: application/json
 
 {
-    "username": "root123",
-    "name": "Superuser",
-    "password": "123456",
-    "shoppingCard": []
+    "email": "1312323",
+    "name": "123132243",
+    "password": "11231232334"
 }
 
 ###

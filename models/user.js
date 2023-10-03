@@ -5,10 +5,13 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
-  name: String,
-  passwordHash: String,
+  name: {
+    type: String,
+  },
+  passwordHash: {
+    type: String,
+  },
   shoppingCart: [
     {
       productId: {
@@ -30,8 +33,6 @@ userSchema.set('toJSON', {
     delete returnedObject.passwordHash
   },
 })
-
-userSchema.plugin(uniqueValidator)
 
 const User = mongoose.model('User', userSchema)
 
