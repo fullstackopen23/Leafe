@@ -480,6 +480,7 @@ nav span {
   padding: 80px 40px;
   width: 100%;
   flex-direction: column;
+  text-align: center;
 }
 
 .emptyShoppingCartContainer button {
